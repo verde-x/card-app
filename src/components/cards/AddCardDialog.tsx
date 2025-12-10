@@ -37,7 +37,7 @@ export const AddCardDialog = ({ onSuccess }: AddCardDialogProps) => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline">Add</Button>
+        <Button className="me-2">Add</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[800px]">
         <DialogHeader>

@@ -38,14 +38,16 @@ export const CardList = () => {
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between mb-3">
         <div className="ps-2">
           <h2 className="text-2xl font-bold">Business Cards</h2>
           <p className="text-sm text-muted-foreground">
             {cards.length} {cards.length === 1 ? "card" : "cards"} registered{" "}
           </p>
         </div>
-        <AddCardDialog onSuccess={refetch} />
+        <div className="self-end">
+          <AddCardDialog onSuccess={refetch} />
+        </div>
       </div>
 
       <Card className="p-6">
