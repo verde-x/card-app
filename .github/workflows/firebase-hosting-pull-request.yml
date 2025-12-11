@@ -21,4 +21,4 @@ jobs:
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_CARD_APP_256BZ }}
-          projectId: card-app-256bz
+          projectId: biz-app-53e43
