@@ -11,19 +11,21 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { useCard } from "@/hooks/useCard";
-import { CardForm } from "@/components/cards/CardForm";
-import { type CardFormData } from "@/types/card";
+import { CardForm } from "@/components/bizcards/CardForm";
+import type { Card, CardFormData } from "@/types/card";
+import { Pencil } from "lucide-react";
 
-interface AddCardDialogProps {
+interface EditCardDialogProps {
+  card: Card;
   onSuccess?: () => void;
 }
 
-export const AddCardDialog = ({ onSuccess }: AddCardDialogProps) => {
+export const EditCardDialog = ({ card, onSuccess }: EditCardDialogProps) => {
   const [open, setOpen] = useState(false);
-  const { addCard } = useCard();
+  const { updateCard } = useCard();
 
   const handleSubmit = async (formData: CardFormData) => {
-    const result = await addCard(formData);
+    const result = await updateCard(card.id, formData);
 
     if (!result.success) {
       alert(`Error: ${result.error?.message}`);
@@ -37,23 +39,29 @@ export const AddCardDialog = ({ onSuccess }: AddCardDialogProps) => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="me-2">Add</Button>
+        <Button variant="ghost" size="icon">
+          <Pencil className="size-3.5" />
+        </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[800px]">
         <DialogHeader>
-          <DialogTitle>Add Card</DialogTitle>
+          <DialogTitle>Edit Card</DialogTitle>
           <DialogDescription>
-            Enter new business card here. Click save when you're done.
+            Edit business card here. Click save when you're done.
           </DialogDescription>
         </DialogHeader>
 
-        <CardForm id="add-card-form" onSubmit={handleSubmit} />
+        <CardForm
+          id="edit-card-form"
+          onSubmit={handleSubmit}
+          initialData={card}
+        />
 
         <DialogFooter>
           <DialogClose asChild>
             <Button variant="outline">Cancel</Button>
           </DialogClose>
-          <Button type="submit" form="add-card-form">
+          <Button type="submit" form="edit-card-form">
             Save changes
           </Button>
         </DialogFooter>

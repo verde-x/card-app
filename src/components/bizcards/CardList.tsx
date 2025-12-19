@@ -9,9 +9,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { AddCardDialog } from "@/components/cards/AddCardDialog";
-import { EditCardDialog } from "@/components/cards/EditCardDialog";
-import { DeleteCardDialog } from "@/components/cards/DeleteCardDialog";
+import { AddCardDialog } from "@/components/bizcards/AddCardDialog";
+import { EditCardDialog } from "@/components/bizcards/EditCardDialog";
+import { DeleteCardDialog } from "@/components/bizcards/DeleteCardDialog";
 
 export const CardList = () => {
   const { cards, loading, error, refetch } = useCard();

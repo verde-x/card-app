@@ -4,6 +4,8 @@ import {
   BookOpen,
   Bot,
   Command,
+  House,
+  IdCard,
   Frame,
   GalleryVerticalEnd,
   Map,
@@ -13,7 +15,7 @@ import {
 } from "lucide-react";
 
 import { NavMain } from "@/components/layout/nav-main";
-import { NavProjects } from "@/components/layout/nav-projects";
+import { NavApplications } from "@/components/layout/nav-applications";
 import { NavUser } from "@/components/layout/nav-user";
 import { TeamSwitcher } from "@/components/layout/team-switcher";
 import {
@@ -135,10 +137,20 @@ const data = {
       ],
     },
   ],
-  projects: [
+  applications: [
     {
-      name: "Design Engineering",
-      url: "#",
+      name: "Dashboard",
+      url: "dashboard",
+      icon: House,
+    },
+    {
+      name: "Business Cards",
+      url: "bizcards",
+      icon: IdCard,
+    },
+    {
+      name: "Cash Flow Statement",
+      url: "cashflow",
       icon: Frame,
     },
     {
@@ -162,7 +174,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <NavProjects projects={data.projects} />
+        <NavApplications applications={data.applications} />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />
